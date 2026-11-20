@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-invoices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <main class="box">
+
+      <!-- Header -->
+      <header class="top">
+        <div class="title-block">
+          <h1>E-invoices</h1>
+          <p class="muted" id="subtitle"></p>
+        </div>
+        <div class="top-actions">
+          <span class="small muted" id="updated"></span>
+          <button type="button" class="btn" id="refresh">Refresh</button>
+        </div>
+      </header>
+
+      <!-- Health line, or the failed-run alert -->
+      <div id="health"></div>
+
+      <!-- Number strip: each number is also a filter -->
+      <div class="strip" id="strip"></div>
+
+      <!-- List heading and search -->
+      <div class="list-head">
+        <div class="list-title">
+          <h2 id="list-title"></h2>
+          <p class="muted" id="list-hint"></p>
+        </div>
+        <div class="search">
+          <label for="invoice-search" class="sr-only">Search invoices</label>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6770" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input id="invoice-search" type="search" placeholder="Search by invoice number or buyer" autocomplete="off">
+        </div>
+      </div>
+
+      <!-- Invoice table -->
+      <div class="table-scroll">
+        <div class="table">
+          <div class="row-grid table-head">
+            <span>Invoice</span>
+            <span>Buyer</span>
+            <span class="right">Amount (AED)</span>
+            <span>Status</span>
+            <span>Next step</span>
+            <span class="right">Days left</span>
+            <span></span>
+          </div>
+          <div id="rows"></div>
+        </div>
+      </div>
+
+      <p class="footnote">Done means the buyer’s ASP accepted the invoice and the FTA confirmed the tax data. The four small bars show each step: ERP, our ASP, buyer’s ASP, FTA. Days left counts down the 14-day limit; confirm the exact rule with your tax advisor.</p>
+
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
